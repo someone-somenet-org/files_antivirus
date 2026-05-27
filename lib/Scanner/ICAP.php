@@ -77,6 +77,7 @@ class ICAP extends ScannerBase {
 				$this->icapRequest = $this->icapClient->reqmod($this->service, [
 					'Allow' => 204,
 					'X-Client-IP' => $remote,
+					'X-Server-IP' => gethostbyname(gethostname()),
 				], [
 					"PUT $encodedPath HTTP/1.0",
 					'Host: nextcloud'
@@ -85,6 +86,7 @@ class ICAP extends ScannerBase {
 				$this->icapRequest = $this->icapClient->respmod($this->service, [
 					'Allow' => 204,
 					'X-Client-IP' => $remote,
+					'X-Server-IP' => gethostbyname(gethostname()),
 				], [
 					"GET $encodedPath HTTP/1.0",
 					'Host: nextcloud',
